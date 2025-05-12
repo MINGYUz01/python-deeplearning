@@ -1,0 +1,49 @@
+
+---
+
+### &zwnj;**.gitignore 模板**&zwnj;
+
+```gitignore
+# Python 相关
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# 数据集和模型（避免提交大文件）
+data/raw/
+data/processed/*.h5
+models/*.pt
+models/*.ckpt
+*.zip
+*.tar.gz
+
+# 环境文件
+.env
+venv/
+.env/
+*.env
+
+# Jupyter 笔记本
+.ipynb_checkpoints/
+*.ipynb
+
+# 日志和缓存
+*.log
+*.csv
+.cache/
+
+# IDE 文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 实验性文件
+experiments/
+tmp/
