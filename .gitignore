@@ -1,6 +1,3 @@
-
----
-
 ### &zwnj;**.gitignore 模板**&zwnj;
 
 ```gitignore
@@ -15,6 +12,7 @@ build/
 data/raw/
 data/processed/*.h5
 models/*.pt
+models/*.pth
 models/*.ckpt
 *.zip
 *.tar.gz
