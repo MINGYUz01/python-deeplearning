@@ -1,3 +1,4 @@
 import os
+from sklearn.datasets import load_iris
 
-print(__file__)
+print(load_iris())
