@@ -1,4 +1,5 @@
 from unittest import TestLoader
+from numpy import corrcoef
 from sklearn.datasets import load_iris
 import torch
 from torch.utils.data import Dataset, DataLoader, random_split
@@ -113,13 +114,18 @@ def train(model, epochs, train_loader, val_loader, device, optimizer, criterion)
                 
     return train_losses, val_losses, val_acc
 
-# def test(model, test_loader, device):
-#     coreect = 0
-#     with torch.no_grad():
-#         model.eval()
-#         for x, y in test_loader:
-#             z = model(x)
-#             predict = torch.argmax(z, -1)
+def test(model, test_loader):
+    coreect = 0
+    iterations = 0
+    with torch.no_grad():
+        model.eval()
+        for x, y in tqdm(test_loader, 'Testing ...'):
+            z = model(x)
+            predict = torch.argmax(z, -1)
+            coreect += torch.sum(predict == y).item()
+            iterations += y.size(0)
+    test_acc = coreect / iterations
+    print('Test acc : {}'.format(test_acc))
 
 
 def main():
@@ -129,7 +135,7 @@ def main():
         'dataset': 'iris',
         'epochs': 300,
         'batch_size': 32,
-        'learning_rate': 1e-2,
+        'learning_rate': 1e-3,
         'optimizer': 'Adam',
         'criterion': 'MSELoss',
     }
